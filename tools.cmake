@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 function(hunter_init)
-  cmake_parse_arguments(HUNTER_INIT "LOCAL")
+  cmake_parse_arguments(HUNTER_INIT "LOCAL" "" "")
   if(NOT EXISTS "${CMAKE_BINARY_DIR}/HunterGate.cmake")
     message(
       STATUS
