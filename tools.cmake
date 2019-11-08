@@ -20,8 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-function(hunter_init)
-  cmake_parse_arguments(HUNTER_INIT "LOCAL" "" "")
+macro(hunter_init)
+  cmake_parse_arguments(HUNTER_INIT "LOCAL" "" "" ${ARGN})
   if(NOT EXISTS "${CMAKE_BINARY_DIR}/HunterGate.cmake")
     message(
       STATUS
@@ -33,11 +33,11 @@ function(hunter_init)
       "${CMAKE_BINARY_DIR}/HunterGate.cmake")
   endif()
   include(${CMAKE_BINARY_DIR}/HunterGate.cmake)
-  if(HUNTER_INIT_LOCAL)
+  if("${HUNTER_INIT_LOCAL}")
     set(LOCAL_V "LOCAL")
   else()
     set(LOCAL_V "")
   endif()
   huntergate(URL "https://github.com/cpp-pm/hunter/archive/v0.23.215.tar.gz"
              SHA1 "6969b8330f8db140196d567dd0c570f8789c3c4e" ${LOCAL_V})
-endfunction()
+endmacro()
